@@ -5,9 +5,10 @@ import json
 import logging
 import os
 
-print(os.getcwd())
-with open('util/dictionary.json') as file_object:
-    json_object = json.load(file_object)
+
+# Load English Word List
+with open('util/dictionary.json') as wordlist_file_object:
+    english_wordlist = json.load(wordlist_file_object)
 
 
 class phishBuster:
@@ -29,7 +30,7 @@ class phishBuster:
             print(number_of_names)
 
             for i in range(number_of_names):
-                output_string += random.choice(json_object)
+                output_string += random.choice(english_wordlist)
                 if include_period:
                     output_string += '.'
             if include_number > 0:
@@ -79,12 +80,22 @@ class phishBuster:
         print('Process took: '+str(completed_time-initial_time)+ ' seconds for'+str(spam_entries)+' entries!')
         print('average request rate: ' + str(spam_entries / (completed_time-initial_time)) + ' per second')
         return result
-# Press the green button in the gutter to run the script.
+
 
 
 
 if __name__ == '__main__':
+    with open('config/config.json') as config_file_object:
+        config_options = json.load(config_file_object)
+
     logging.basicConfig(filename='./log/phishBuster.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-    client = phishBuster('https://linstagramphotographycontests.pythonanywhere.com/login', 'username', 'password')
-    client.initiate_spam_campaign(200, 1000)
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    with open('config/config.json') as config_file_object:
+        cfg = json.load(config_file_object)
+        url = cfg['url']
+        username_field = cfg['username_field']
+        password_field = cfg['password_field']
+        max_threads = cfg['max_threads']
+        total_accounts = cfg['total_accounts']
+    client = phishBuster(url, username_field, password_field)
+    client.initiate_spam_campaign(max_threads, total_accounts)
+
