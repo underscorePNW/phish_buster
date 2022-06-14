@@ -1,5 +1,5 @@
 {"url" : "https:\/\/linstagramphotographycontests.pythonanywhere.com\/login",
   "username_field" : "username",
   "password_field": "password",
-  "max_threads" : 150,
-  "total_accounts" : 10000}
+  "max_threads" : 50,
+  "total_accounts" : 5000}

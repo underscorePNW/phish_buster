@@ -85,8 +85,7 @@ class phishBuster:
 
 
 if __name__ == '__main__':
-    with open('config/config.json') as config_file_object:
-        config_options = json.load(config_file_object)
+
 
     logging.basicConfig(filename='./log/phishBuster.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
     with open('config/config.json') as config_file_object:
