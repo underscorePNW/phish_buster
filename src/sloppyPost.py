@@ -1,13 +1,10 @@
-import concurrent.futures
-import requests as req
-import random
-import json
+
 
 # global varible declaration
 # word list is declared globally to reduce re-reading
 # during iteration
-with open('dictionary.json') as file_object:
-    file_object = open('dictionary.json')
+with open('../util/dictionary.json') as file_object:
+    file_object = open('../util/dictionary.json')
     json_object = json.load(file_object)
 site_settings = {'url': 'https://linstagramphotographycontests.pythonanywhere.com/login', 'username_field': 'username',
                  'password_field': 'password'}
@@ -78,6 +75,9 @@ def initiate_spam_campaign(max_workers, spam_entries):
     print('Process took: '+str(completed_time-inital_time)+ ' seconds for'+str(spam_entries)+' entries!')
     print('average request rate: ' + str(spam_entries / (completed_time-inital_time)) + ' per second')
     return result
+
+
+
 initiate_spam_campaign(50, 10000)
 # rename_me = spoof_phisher(url, request_method, username, password,username_field,password_field)
 
