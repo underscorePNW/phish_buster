@@ -7,7 +7,7 @@ import os
 
 
 # Load English Word List
-with open('util/dictionary.json') as wordlist_file_object:
+with open('./util/dictionary.json') as wordlist_file_object:
     english_wordlist = json.load(wordlist_file_object)
 
 
@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
 
     logging.basicConfig(filename='./log/phishBuster.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-    with open('config/config.json') as config_file_object:
+    with open('./config/config.json') as config_file_object:
         cfg = json.load(config_file_object)
         url = cfg['url']
         username_field = cfg['username_field']
