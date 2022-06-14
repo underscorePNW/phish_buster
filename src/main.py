@@ -87,7 +87,7 @@ class phishBuster:
 if __name__ == '__main__':
 
 
-    logging.basicConfig(filename='./log/phishBuster.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+    #logging.basicConfig(filename='./log/phishBuster.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
     with open('phish_buster/config/config.json') as config_file_object:
         cfg = json.load(config_file_object)
         url = cfg['url']
