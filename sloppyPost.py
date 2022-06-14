@@ -1,6 +1,4 @@
-import asyncio
 import concurrent.futures
-import urllib
 import requests as req
 import random
 import json
